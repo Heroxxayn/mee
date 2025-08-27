@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Code, Palette, Zap, Heart } from 'lucide-react';
+import Ayn from '../assets/ayn.jpg';
 
 const About = () => {
   const sectionRef = useRef(null);
@@ -156,7 +157,7 @@ const About = () => {
             <div className="relative w-full max-w-md mx-auto">
               <div className="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-cyan-400/20 to-purple-600/20 backdrop-blur-sm border border-gray-700/50">
                 <div className="w-full h-full flex items-center justify-center text-6xl font-black bg-gradient-to-br from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-                  A
+                  <img src={Ayn} alt="Ayan" className="w-full h-full object-cover" />
                 </div>
               </div>
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-purple-600/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500 -z-10" />
