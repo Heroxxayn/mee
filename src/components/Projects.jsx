@@ -1,13 +1,17 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ExternalLink, Github, Eye } from 'lucide-react';
+import { div } from 'framer-motion/client';
 
 const Projects = () => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const projectsRef = useRef(null);
   const filterRef = useRef(null);
+
+  // Add state for showing all projects
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -70,10 +74,8 @@ const Projects = () => {
       description: "Created using React.js and Framer Motion for animations",
       image:
         "https://github.com/NPC-MARIMO/MEE/blob/main/src/assets/Projects/brainwave.png?raw=true",
-      category: "Web App",
-      tech: ["React", "Node.js", "MongoDB", "Stripe"],
+      tech: ["React", "Framer-Motion"],
       live: "https://my-brainwave.vercel.app/",
-      featured: true,
     },
     {
       id: 2,
@@ -81,61 +83,98 @@ const Projects = () => {
       description: "An Animated project using HTML, CSS and JS",
       image:
         "https://github.com/NPC-MARIMO/MEE/blob/main/src/assets/Projects/cyperfiction.png?raw=true",
-      category: "Website",
-      tech: ["React", "GSAP", "Three.js", "Tailwind"],
+      tech: ["HTML", "CSS", "Javascript"],
       live: "https://cyperfiction-by-mosshead.vercel.app/",
-      featured: true,
     },
     {
       id: 3,
-      title: "Task Management App",
+      title: "i-Phone",
       description:
         "A React.js and Three.js project featuring GSAP animations, built as part of my learning journey",
       image:
         "https://github.com/NPC-MARIMO/MEE/blob/main/src/assets/Projects/iphone.png?raw=true",
-      category: "Web App",
-      tech: ["Next.js", "TypeScript", "Supabase", "Framer Motion"],
+      tech: ["React", "GSAP", "Three.js"],
       live: "https://i-phone-chi.vercel.app/",
-      featured: false,
     },
     {
       id: 4,
-      title: "Weather Dashboard",
+      title: "Metaverse",
       description:
         "A Next.js project focusing on frontend and animations using Framer Motion",
       image:
         "https://github.com/NPC-MARIMO/MEE/blob/main/src/assets/Projects/metaverse.png?raw=true",
-      category: "Dashboard",
-      tech: ["Vue.js", "Chart.js", "Weather API", "CSS3"],
+      tech: ["Next.js", "Framer Motion"],
       live: "https://hello-i-m-me.netlify.app/",
-      featured: false,
     },
     {
       id: 5,
-      title: "Social Media App",
+      title: "Promptopia",
       description:
         "A Next.js full-stack app where users can share and read prompts",
       image:
         "https://github.com/NPC-MARIMO/MEE/blob/main/src/assets/Projects/promptopia.png?raw=true",
-      category: "Mobile App",
-      tech: ["React Native", "Firebase", "Redux", "Socket.io"],
+      tech: ["Next.js", "Google Auth", "MongoDB"],
       live: "https://evo-m-promptopia.vercel.app/",
-      featured: true,
     },
     {
       id: 6,
-      title: "AI Blog Generator",
+      title: "Car Rental",
       description: "A Next.js frontend project using Tailwind CSS",
       image:
         "https://github.com/NPC-MARIMO/MEE/blob/main/src/assets/Projects/carrental.png?raw=true",
-      category: "AI Tool",
-      tech: ["Python", "OpenAI API", "FastAPI", "React"],
+      tech: ["Next.js"],
       live: "https://evo-carrental.vercel.app/",
-      featured: false,
+    },
+    {
+      id: 7,
+      title: "Legacy Vault",
+      description:
+        "A Platform where users can create Families and share Memories with their loved ones",
+      image:
+        "https://github.com/NPC-MARIMO/MEE/blob/main/src/assets/Projects/evovault.png?raw=true",
+      tech: [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Express.js",
+        "Redux",
+        "Cloudinary",
+        "GSAP",
+      ],
+      live: "https://evo-carrental.vercel.app/",
+    },
+    {
+      id: 8,
+      title: "E-Commerce",
+      description: "A Full Stack MERN E-Commerce Application",
+      image:
+        "https://github.com/NPC-MARIMO/MEE/blob/main/src/assets/Projects/evotrends.png?raw=true",
+      tech: [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Express.js",
+        "Redux",
+        "Cloudinary",
+        "Paypal",
+      ],
+      live: "https://evo-trends-ecms.vercel.app/",
+    },
+    {
+      id: 9,
+      title: "Bugatti Landing Page",
+      description: "A GSAP-powered animation project built in React.js.",
+      image:
+        "https://github.com/NPC-MARIMO/MEE/blob/main/src/assets/Projects/bugatti.png?raw=true",
+      tech: ["React", "GSAP"],
+      live: "https://mc-d-chi.vercel.app/",
     },
   ];
 
   const categories = ["All", "Web App", "Website", "Dashboard", "Mobile App", "AI Tool"];
+
+  // Determine which projects to show
+  const displayedProjects = showAll ? projects : projects.slice(0, 3);
 
   return (
     <section id="projects" ref={sectionRef} className="py-20 px-6 relative">
@@ -159,19 +198,13 @@ const Projects = () => {
         {/* Filter Buttons */}
         <div ref={filterRef} className="flex flex-wrap justify-center gap-4 mb-16">
           {categories.map((category, index) => (
-            <button
-              key={index}
-              className="group relative px-6 py-3 bg-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-full font-medium text-gray-300 hover:text-white hover:border-cyan-400/50 transition-all duration-300"
-            >
-              <span className="relative z-10">{category}</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/10 to-purple-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </button>
+          <></>
           ))}
         </div>
 
         {/* Projects Grid */}
         <div ref={projectsRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
+          {displayedProjects.map((project) => (
             <div
               key={project.id}
               className="project-card group relative bg-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl overflow-hidden hover:border-cyan-400/50 transition-all duration-500 hover:scale-105"
@@ -229,12 +262,7 @@ const Projects = () => {
 
                 <div className="flex items-center justify-between">
                   <div className="flex space-x-3">
-                    <a
-                      href={project.github}
-                      className="text-gray-400 hover:text-white transition-colors duration-300"
-                    >
-                      <Github size={18} />
-                    </a>
+                   
                     <a
                       href={project.live}
                       className="text-gray-400 hover:text-cyan-400 transition-colors duration-300"
@@ -242,21 +270,32 @@ const Projects = () => {
                       <ExternalLink size={18} />
                     </a>
                   </div>
-                  <button className="text-cyan-400 hover:text-cyan-300 text-sm font-medium transition-colors duration-300">
-                    View Details →
-                  </button>
+                 
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* View More Button */}
+        {/* View More / Hide Button */}
         <div className="text-center mt-16">
-          <button className="group relative px-8 py-4 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full font-semibold text-black overflow-hidden transition-all duration-300 hover:scale-105">
-            <span className="relative z-10">View All Projects</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </button>
+          {!showAll ? (
+            <button
+              className="group relative px-8 py-4 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full font-semibold text-black overflow-hidden transition-all duration-300 hover:scale-105"
+              onClick={() => setShowAll(true)}
+            >
+              <span className="relative z-10">View All Projects</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </button>
+          ) : (
+            <button
+              className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-400 rounded-full font-semibold text-black overflow-hidden transition-all duration-300 hover:scale-105"
+              onClick={() => setShowAll(false)}
+            >
+              <span className="relative z-10">Hide Projects</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </button>
+          )}
         </div>
       </div>
 

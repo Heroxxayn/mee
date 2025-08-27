@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
+import { ChevronDown, Github, Instagram, Linkedin, Mail } from 'lucide-react';
 
 const Hero = () => {
   const heroRef = useRef(null);
@@ -12,7 +12,7 @@ const Hero = () => {
   const scrollRef = useRef(null);
 
   useEffect(() => {
-    const tl = gsap.timeline({ delay: 4 });
+    const tl = gsap.timeline();
 
     // Main title animation
     tl.fromTo(titleRef.current.children,
@@ -89,10 +89,19 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen mt-16 flex items-center justify-center relative px-6">
-      <div ref={heroRef} className="text-center max-w-4xl mx-auto relative z-10">
+    <section
+      id="home"
+      className="min-h-screen mt-16 flex items-center justify-center relative px-6"
+    >
+      <div
+        ref={heroRef}
+        className="text-center max-w-4xl mx-auto relative z-10"
+      >
         {/* Main Title */}
-        <h1 ref={titleRef} className="text-6xl md:text-8xl font-black mb-6 leading-tight">
+        <h1
+          ref={titleRef}
+          className="text-6xl md:text-8xl font-black mb-6 leading-tight"
+        >
           <span className="inline-block bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
             Hi, I'm
           </span>
@@ -112,19 +121,39 @@ const Hero = () => {
         </div>
 
         {/* Description */}
-        <p ref={descriptionRef} className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-          Crafting digital experiences that blend creativity with cutting-edge technology. 
-          I transform ideas into stunning, functional realities.
+        <p
+          ref={descriptionRef}
+          className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed"
+        >
+          Crafting digital experiences that blend creativity with cutting-edge
+          technology. I transform ideas into stunning, functional realities.
         </p>
 
         {/* CTA Buttons */}
-        <div ref={ctaRef} className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-          <button className="group relative px-8 py-4 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full font-semibold text-black overflow-hidden transition-all duration-300 hover:scale-105">
+        <div
+          ref={ctaRef}
+          className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
+        >
+          <button
+            className="group relative px-8 py-4 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full font-semibold text-black overflow-hidden transition-all duration-300 hover:scale-105"
+            onClick={() => {
+              document
+                .querySelector("#projects")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
             <span className="relative z-10">View My Work</span>
             <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </button>
-          
-          <button  className="group relative px-8 py-4 border-2 border-gray-600 rounded-full font-semibold text-white hover:border-cyan-400 transition-all duration-300 hover:scale-105 overflow-hidden">
+
+          <button
+            className="group relative px-8 py-4 border-2 border-gray-600 rounded-full font-semibold text-white hover:border-cyan-400 transition-all duration-300 hover:scale-105 overflow-hidden"
+            onClick={() => {
+              document
+                .querySelector("#contact")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
             <span className="relative z-10">Get In Touch</span>
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </button>
@@ -133,9 +162,12 @@ const Hero = () => {
         {/* Social Links */}
         <div ref={socialRef} className="flex justify-center space-x-6 mb-16">
           {[
-            { icon: Github, href: '#', color: 'hover:text-white' },
-            { icon: Linkedin, href: '#', color: 'hover:text-blue-400' },
-            { icon: Mail, href: '#', color: 'hover:text-red-400' }
+            {
+              icon: Github,
+              href: "https://github.com/Heroxxayn",
+              color: "hover:text-white",
+            },
+            { icon: Instagram, href: "https://instagram.com/ayno._.x", color: "hover:text-blue-400" },
           ].map((social, index) => (
             <a
               key={index}
@@ -147,8 +179,6 @@ const Hero = () => {
             </a>
           ))}
         </div>
-
-      
       </div>
 
       {/* Background gradient orbs */}

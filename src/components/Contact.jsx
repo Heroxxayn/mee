@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
 
 const Contact = () => {
   const sectionRef = useRef(null);
@@ -117,17 +117,11 @@ const Contact = () => {
       name: "GitHub",
     },
     {
-      icon: Linkedin,
+      icon: Instagram,
       href: "https://instagram.com/ayno._.x/",
       color: "hover:text-blue-400",
       name: "Instagram",
-    },
-    {
-      icon: Twitter,
-      href: "#",
-      color: "hover:text-cyan-400",
-      name: "Twitter",
-    },
+    }
   ];
 
   return (

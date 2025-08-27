@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Github, Linkedin, Twitter, Mail, Heart, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, Twitter, Mail, Heart, ArrowUp, Instagram } from 'lucide-react';
 
 const Footer = () => {
   const footerRef = useRef(null);
@@ -52,28 +52,17 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: Github,
-      href: "#",
+      href: "https://github.com/Heroxxayn",
       color: "hover:text-white",
-      name: "GitHub"
+      name: "GitHub",
     },
     {
-      icon: Linkedin,
-      href: "#",
+      icon: Instagram,
+      href: "https://instagram.com/ayno._.x",
       color: "hover:text-blue-400",
-      name: "LinkedIn"
+      name: "LinkedIn",
     },
-    {
-      icon: Twitter,
-      href: "#",
-      color: "hover:text-cyan-400",
-      name: "Twitter"
-    },
-    {
-      icon: Mail,
-      href: "#",
-      color: "hover:text-red-400",
-      name: "Email"
-    }
+   
   ];
 
   const quickLinks = [
@@ -153,7 +142,7 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="mt-12 pt-8 border-t border-gray-800/50 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="text-gray-400 text-sm">
-            © 2024 Ayan. All rights reserved.
+            © {new Date().getFullYear()} Ayan. All rights reserved.
           </div>
           
           <div className="flex items-center space-x-6 text-sm text-gray-400">
