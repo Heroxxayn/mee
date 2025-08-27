@@ -3,6 +3,8 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ExternalLink, Github, Eye } from 'lucide-react';
 import { div } from 'framer-motion/client';
+import Console from '../assets/console.png';
+import Nike from '../assets/nike.png';
 
 const Projects = () => {
   const sectionRef = useRef(null);
@@ -98,23 +100,20 @@ const Projects = () => {
     },
     {
       id: 4,
-      title: "Metaverse",
-      description:
-        "A Next.js project focusing on frontend and animations using Framer Motion",
-      image:
-        "https://github.com/NPC-MARIMO/MEE/blob/main/src/assets/Projects/metaverse.png?raw=true",
-      tech: ["Next.js", "Framer Motion"],
-      live: "https://hello-i-m-me.netlify.app/",
+      title: "Console Design",
+      description: "A Design of a page for console and gaming stuff",
+      image: Console,
+      tech: ["Figma"],
+      live: "https://www.figma.com/design/bw3SomeNUCUlNfLiIixdH4/Untitled?node-id=0-1&t=XW4MHW9gCTw7wwZf-1",
     },
+
     {
       id: 5,
-      title: "Promptopia",
-      description:
-        "A Next.js full-stack app where users can share and read prompts",
-      image:
-        "https://github.com/NPC-MARIMO/MEE/blob/main/src/assets/Projects/promptopia.png?raw=true",
-      tech: ["Next.js", "Google Auth", "MongoDB"],
-      live: "https://evo-m-promptopia.vercel.app/",
+      title: "Nike Design",
+      description: "A Nike shoes design page made in Figma",
+      image: Nike,
+      tech: ["Figma"],
+      live: "https://www.figma.com/design/bw3SomeNUCUlNfLiIixdH4/Untitled?node-id=0-1&t=XW4MHW9gCTw7wwZf-1",
     },
     {
       id: 6,
@@ -127,21 +126,13 @@ const Projects = () => {
     },
     {
       id: 7,
-      title: "Legacy Vault",
+      title: "Metaverse",
       description:
-        "A Platform where users can create Families and share Memories with their loved ones",
+        "A Next.js project focusing on frontend and animations using Framer Motion",
       image:
-        "https://github.com/NPC-MARIMO/MEE/blob/main/src/assets/Projects/evovault.png?raw=true",
-      tech: [
-        "React",
-        "Node.js",
-        "MongoDB",
-        "Express.js",
-        "Redux",
-        "Cloudinary",
-        "GSAP",
-      ],
-      live: "https://evo-carrental.vercel.app/",
+        "https://github.com/NPC-MARIMO/MEE/blob/main/src/assets/Projects/metaverse.png?raw=true",
+      tech: ["Next.js", "Framer Motion"],
+      live: "https://hello-i-m-me.netlify.app/",
     },
     {
       id: 8,

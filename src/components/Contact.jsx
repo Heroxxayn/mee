@@ -104,7 +104,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Location",
-      value: "Aligarh, Khurja",
+      value: "Khurja, Bulandshar",
       color: "from-blue-400 to-cyan-400"
     }
   ];
