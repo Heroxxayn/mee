@@ -183,7 +183,7 @@ const Skills = () => {
                   <div key={skillIndex} className="skill-item">
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-white font-medium">{skill.name}</span>
-                      <span className="text-gray-400 text-sm">{skill.level}%</span>
+                      
                     </div>
                     
                     <div className="relative h-2 bg-gray-800 rounded-full overflow-hidden">
